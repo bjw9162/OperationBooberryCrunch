@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBase : GamePiece {
+/// <summary>
+/// The Root Class of All enemies, from Guards to Cameras
+/// </summary>
+public class EnemyBase : ActorBase {
 
     public class NavWaypoint {
         // has a x and y
@@ -22,11 +25,10 @@ public class EnemyBase : GamePiece {
     public bool canSee; // use this to toggle whether or not you check the vision cone. Enables blinding or disabling of sight.
     public bool hasVision; // has the ability to see
 
-    public Interactable interactable;
+    public Interactable interactable; // the object that lets you interact with the enemy
 
-    public float speed;
     public List<NavWaypoint> patrolRoute; // A list of tile positions to patrol
-    public List<NavWaypoint> dynamicPath; // A list of tile positions if they need to run to
+    public List<NavWaypoint> dynamicPath; // A list of tile positions if they need to run towards something
 
     // Use this for initialization
     void Start () {

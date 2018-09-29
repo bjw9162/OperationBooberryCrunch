@@ -2,18 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCharacter : GamePiece {
+/// <summary>
+/// The Root class for all characters, Theif, Hacker, etc.
+/// </summary>
+public class PlayerCharacter : ActorBase {
 
     public List<Interactable> interactables;
-    public List<Collectable> inventory;
     
     public float moneyAmount; // make sure you round the money amount up two places after decimal
-
-    public string classType;
-    public string subClassType;
-
-    public float speed;
-    public Vector3 direction;
 
 	// Use this for initialization
 	void Start () {
