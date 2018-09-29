@@ -34,4 +34,12 @@ public class ActorBase : GamePiece {
         // like fade away, maybe be destroyed. 
         // trigger other events.
     }
+
+    /// <summary>
+    /// Call this when the Actor collides 
+    /// with a baton or bullet, or trap maybe
+    /// </summary>
+    public virtual void IsHit() {
+        // this Actor got the crap smacked outta them.
+    }
 }

@@ -12,10 +12,17 @@ public class Interactable :MonoBehaviour{
 
     public int Id { get; set; }
 
+    /// <summary>
+    /// What triggers as a result of a Player Interacting with it.
+    /// </summary>
     public virtual void Interact() {
         // do the thing
     }
 
+    /// <summary>
+    /// Take the interactable out of the Players interactables List
+    /// </summary>
+    /// <param name="playerCharacter"> Take in the Player Character you are talking about.</param>
     public virtual void UnRegister( PlayerCharacter playerCharacter)
     {
         IsRegistered = false;
@@ -25,9 +32,12 @@ public class Interactable :MonoBehaviour{
             if (curObj.Id == this.Id)
                 playerCharacter.interactables.Remove(curObj);
         }
-        
     }
 
+    /// <summary>
+    /// Put the interactable into the Players interactables List
+    /// </summary>
+    /// <param name="playerCharacter"> Take in the Player Character you are talking about.</param>
     public virtual void Register( PlayerCharacter playerCharacter) {
         IsRegistered = true;
         // add self from Interaction list of player

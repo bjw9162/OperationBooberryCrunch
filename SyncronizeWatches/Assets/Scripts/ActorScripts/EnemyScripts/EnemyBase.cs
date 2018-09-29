@@ -73,4 +73,8 @@ public class EnemyBase : ActorBase {
         return false; // hit this if something doesn't compute right
     }
 
+    public virtual void Attack() {
+        // do your particular attack, whatever that means
+    }
+
 }
