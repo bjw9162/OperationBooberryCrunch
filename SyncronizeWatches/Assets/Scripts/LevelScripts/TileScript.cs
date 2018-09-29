@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class TileScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private int xPos;
+    public int XPos { get { return xPos; } set { xPos = value; } }
+
+    private int yPos;
+    public int YPos { get { return yPos; } set { yPos = value; } }
+
+    public bool passable = true;
+    public Sprite image;
 }
