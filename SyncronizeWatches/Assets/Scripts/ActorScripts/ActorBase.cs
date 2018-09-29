@@ -16,11 +16,6 @@ public class ActorBase : GamePiece {
 
     public List<Collectable> inventory;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		

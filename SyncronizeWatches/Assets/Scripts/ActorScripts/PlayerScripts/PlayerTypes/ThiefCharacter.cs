@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class ThiefCharacter : PlayerCharacter
 {
-
     // Use this for initialization
-    void Start()
+    public override void Init()
     {
-
+        base.Init();
         classType = "Thief";
         subClassType = "Guy with a Hoodie";
 

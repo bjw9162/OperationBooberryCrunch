@@ -9,13 +9,15 @@ public class Collectable : Construct {
     public bool keyItem;
     public float moneyValue;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    public override void Init()
+    {
+        base.Init();
         pieceName = "collectible";
         keyItem = false;
         moneyValue = 0f;
         this.State = "uncollected";
-	}
+    }
 
     public virtual void SetStateCollected() {
         this.State = "collected";

@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Construct : GamePiece {
 
-	// Use this for initialization
-	void Start () {
+    public override void Init()
+    {
+        base.Init();
+
         stationary = true;
         canRotate = false;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }

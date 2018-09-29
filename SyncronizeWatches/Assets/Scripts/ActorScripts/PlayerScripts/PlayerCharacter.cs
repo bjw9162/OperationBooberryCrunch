@@ -12,7 +12,8 @@ public class PlayerCharacter : ActorBase {
     public float moneyAmount; // make sure you round the money amount up two places after decimal
 
 	// Use this for initialization
-	void Start () {
+	public override void Init() {
+        base.Init();
         moneyAmount = 0f;
         direction = Vector3.right;
         interactables = new List<Interactable>();
@@ -65,5 +66,16 @@ public class PlayerCharacter : ActorBase {
             return;
         }
 
+    }
+
+    /// <summary>
+    /// After Updating the Velocity seperately, apply the velocity to the position of this character, then reset the velocity value.
+    /// You should calculate velocity elsewhere, based on the inputs.
+    /// </summary>
+    public void ProcessMovement() {
+        // take the velocity and apply it to the position;
+        Position += Velocity * Time.deltaTime; 
+        Velocity = Vector3.zero;
+        transform.position = Position;
     }
 }

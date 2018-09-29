@@ -30,18 +30,19 @@ public class EnemyBase : ActorBase {
     public List<NavWaypoint> patrolRoute; // A list of tile positions to patrol
     public List<NavWaypoint> dynamicPath; // A list of tile positions if they need to run towards something
 
-    // Use this for initialization
-    void Start () {
+    public override void Init()
+    {
+        base.Init();
         hasVision = true;
         canRotate = true;
         stationary = false;
 
         this.CreatePatrolRoute();
         // create the patrolRoute, maybe in the Unity Inspector?
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 

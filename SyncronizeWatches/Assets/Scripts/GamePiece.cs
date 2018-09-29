@@ -7,7 +7,8 @@ public class GamePiece : MonoBehaviour {
     private Vector3 position;
     public Vector3 Position { get { return position; } set { position = value; } }
 
-    Sprite sprite;
+    public Sprite sprite;
+    public SpriteRenderer spriteRenderer;
 
     private string state;
     public string State { get { return state;} set { state = value; } }
@@ -22,10 +23,16 @@ public class GamePiece : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Init();
+	}
+
+    public virtual void Init() {
         Position = Vector3.zero;
         Velocity = Vector3.zero;
-	}
-	
+
+        spriteRenderer.sprite = sprite;
+    }
+
 	// Update is called once per frame
 	void Update () {
 		
