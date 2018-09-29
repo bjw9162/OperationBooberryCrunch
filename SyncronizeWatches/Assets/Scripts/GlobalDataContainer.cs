@@ -6,6 +6,6 @@ public static class GlobalDataContainer
 {
     public static float tileWidth = 1;
     public static float tileHeight = 1;
-    public static float chunkWidth = 50;
-    public static float chunkHeight = 50;
+    public static int chunkWidth = 50;
+    public static int chunkHeight = 50;
 }

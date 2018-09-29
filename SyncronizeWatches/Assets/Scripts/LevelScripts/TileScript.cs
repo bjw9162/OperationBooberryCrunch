@@ -12,4 +12,5 @@ public class TileScript : MonoBehaviour {
 
     public bool passable = true;
     public Sprite image;
+    public bool init = false;
 }
