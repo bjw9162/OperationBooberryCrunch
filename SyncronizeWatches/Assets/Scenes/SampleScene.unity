@@ -163,8 +163,9 @@ MonoBehaviour:
   chunkGrid: []
   tileGrid: []
   clusters:
-  - {fileID: 114688483041674262, guid: f97c07381b94bb84db33f62bc96d47a8, type: 2}
+  - {fileID: 114562617099767160, guid: 87b352e6eb4655a4bb761dbefcfbf1a5, type: 2}
   entranceChunks: []
+  spawns: []
 --- !u!4 &104671250
 Transform:
   m_ObjectHideFlags: 0

@@ -112,6 +112,7 @@ public class Level : MonoBehaviour {
             {
                 if(newCluster.grid[i + (j * c.width)] != null)
                 {
+                    Debug.Log("Pos: " + (x + i) + ", " + (y + j));
                     newCluster.grid[i + (j * c.width)].ChunkPosX = x + i;
                     newCluster.grid[i + (j * c.width)].ChunkPosY = y + j;
                     chunkGrid[((y + j) * chunkColumns) + (x + i)].chunk = newCluster.grid[i + (j * c.width)];

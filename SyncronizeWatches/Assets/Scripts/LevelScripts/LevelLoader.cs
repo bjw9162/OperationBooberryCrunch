@@ -66,9 +66,18 @@ public class LevelLoader : MonoBehaviour {
             switch(type)
             {
                 case MapType.CHUNK:
+                    
+                    GameObject baseTiles = new GameObject("Base Tiles");
+                    baseTiles.transform.SetParent(newMap.transform);
+                    baseTiles.AddComponent<SetPiece>();
+                    SetPiece piece = baseTiles.GetComponent<SetPiece>();
+                    piece.grid.AddRange(processedTiles);
+                    piece.Width = map.width;
+                    piece.Height = map.height;
+
                     newMap.AddComponent<LevelChunk>();
                     LevelChunk tempChunk = newMap.GetComponent<LevelChunk>();
-                    tempChunk.chunkTiles.AddRange(processedTiles);
+                    tempChunk.baseTiles = piece;
                     Object prefab = PrefabUtility.CreatePrefab("Assets/Resources/Prefabs/LevelPrefabs/LevelChunks/" + map.name + ".prefab", newMap);
                     //AssetDatabase.CreateAsset(newMap, "Assets/Resources/Prefabs/LevelPrefabs/LevelChunks/" + map.name);
                     break;
