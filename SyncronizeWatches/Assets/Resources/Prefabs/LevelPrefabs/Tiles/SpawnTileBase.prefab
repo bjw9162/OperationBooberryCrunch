@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4000225865859770}
   - component: {fileID: 114997135146537762}
   m_Layer: 0
-  m_Name: EmptyTileBase
+  m_Name: SpawnTileBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e5a316298d22d4db1d8ac0fa485b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 3
   passable: 1
   image: {fileID: 212418183488015702}
   init: 0

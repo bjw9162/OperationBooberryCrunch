@@ -18,6 +18,19 @@ public class Level : MonoBehaviour {
         public bool occupied = false;
     }
 
+    [System.Serializable]
+    public class SpawnPoint
+    {
+        public Vector2 position;
+        bool player = false;
+
+        public SpawnPoint(TileScript t)
+        {
+            position = t.gameObject.transform.position;
+            player = t.type == TileScript.TileType.PLAYERSPAWN;
+        }
+    }
+
     public LevelManager lMan;
 
     public int chunkRows;
@@ -36,6 +49,8 @@ public class Level : MonoBehaviour {
 
     public List<LevelChunkCluster> clusters = new List<LevelChunkCluster>();
     public List<LevelChunkCluster> entranceChunks = new List<LevelChunkCluster>();
+
+    public List<SpawnPoint> spawns = new List<SpawnPoint>();
 
     public void Init()
     {
@@ -61,7 +76,7 @@ public class Level : MonoBehaviour {
         //TODO: Actual generation code goes here
         //--------------------------------------
 
-        AddCluster(0,0,clusters[0]);
+        AddCluster(0, 0, clusters[0]);
         AddCluster(1, 0, clusters[0]);
         AddCluster(0, 1, clusters[0]);
 
@@ -155,6 +170,11 @@ public class Level : MonoBehaviour {
                     int tileIndex = chunkOffset + ((j / GlobalDataContainer.chunkWidth) * tileColumns) + (j % GlobalDataContainer.chunkWidth);
                     tileGrid[tileIndex].tile = chunkGrid[i].chunk.chunkTiles[j];
                     tileGrid[tileIndex].occupied = true;
+
+                    if(chunkGrid[i].chunk.chunkTiles[j].type == TileScript.TileType.PLAYERSPAWN)
+                    {
+                        spawns.Add(new SpawnPoint(chunkGrid[i].chunk.chunkTiles[j]));
+                    }
                 }
             }
         }
