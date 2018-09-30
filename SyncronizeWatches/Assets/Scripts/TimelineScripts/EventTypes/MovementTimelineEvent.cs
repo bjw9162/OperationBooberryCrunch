@@ -23,12 +23,11 @@ public class MovementTimelineEvent : TimelineEventBase {
     /// <param name="playerCharacter">The Player who is moving</param>
     /// <param name="_origin"> The place the player moved from</param>
     /// <param name="_destination"> The place the player moved to</param>
-    public MovementTimelineEvent(PlayerCharacter playerCharacter, Vector3 _origin, Vector3 _destination) {
+    public MovementTimelineEvent(PlayerCharacter playerCharacter, Vector3 _destination) {
         pc = playerCharacter;
-        origin = _origin;
         destination = _destination;
         timestamp = Timeline.timeElapsed;
-        eventDescripton = string.Format("Player {0} moved to {1}", playerCharacter.pieceName, destination);
+        eventDescripton = string.Format("Player {0} moved to {1} at {2}", playerCharacter.pieceName, playerCharacter.Position, timestamp);
     }
 
     /// <summary>
@@ -38,5 +37,6 @@ public class MovementTimelineEvent : TimelineEventBase {
     public override void Resolve() {
         // Move the character from A to B
         pc.Position = destination;
+        Debug.Log(eventDescripton);
     }
 }

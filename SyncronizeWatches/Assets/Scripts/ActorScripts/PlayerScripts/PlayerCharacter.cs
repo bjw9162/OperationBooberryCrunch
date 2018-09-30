@@ -10,6 +10,7 @@ public class PlayerCharacter : ActorBase {
     public List<Interactable> interactables;
     public float moneyAmount; // make sure you round the money amount up two places after decimal
     public bool recording;
+    public Color color;
 
 	// Use this for initialization
 	public override void Init() {
@@ -17,13 +18,15 @@ public class PlayerCharacter : ActorBase {
         moneyAmount = 0f;
         direction = Vector3.right;
         interactables = new List<Interactable>();
-        recording = true;
+
+        // temporary
+        spriteRenderer.color = color;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        ProcessMovement();
+    }
 
     public void Collect(Collectable collectable) {
         collectable.SetStateCollected();
@@ -76,12 +79,11 @@ public class PlayerCharacter : ActorBase {
     public void ProcessMovement() {
         // take the velocity and apply it to the position;
 
-        var ogPos = Position;
         Position += Velocity * Time.deltaTime; 
         Velocity = Vector3.zero;
         transform.position = Position;
 
         if (recording == true)
-            timelineEvents.Add(new MovementTimelineEvent(this, ogPos, Position)); // add the event to your personal list to be compiled later.
+            timelineEvents.Add(new MovementTimelineEvent(this, this.Position)); // add the event to your personal list to be compiled later.
     }
 }

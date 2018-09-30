@@ -9,19 +9,11 @@ public class ThiefCharacter : PlayerCharacter
     {
         base.Init();
         classType = "Thief";
-        subClassType = "Guy with a Hoodie";
+        subClassType = "Guy with shifty eyes and an appreciation of shiny objects.";
 
         speed = 1;
         direction = Vector3.right;
 
         health = 1;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
 }
