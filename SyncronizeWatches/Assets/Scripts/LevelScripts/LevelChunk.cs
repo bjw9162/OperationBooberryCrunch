@@ -39,6 +39,7 @@ public class LevelChunk : MonoBehaviour {
         for(int i = 0; i < slots.Count; i++)
         {
             GameObject obj = Instantiate(slots[i].possiblePieces[Random.Range(0, slots[i].possiblePieces.Count)].gameObject);
+            obj.transform.SetParent(this.transform);
             obj.transform.localPosition = new Vector3(slots[i].xPos * GlobalDataContainer.tileWidth, slots[i].yPos * GlobalDataContainer.tileHeight, 0);
             SetPiece newSet = obj.GetComponent<SetPiece>();
             slots[i].attachedPiece = newSet;

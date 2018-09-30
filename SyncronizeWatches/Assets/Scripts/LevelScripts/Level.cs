@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Level : MonoBehaviour {
 
+    [System.Serializable]
     public class chunkSlot
     {
         public LevelChunk chunk;
         public bool occupied = false;
     }
 
+    [System.Serializable]
     public class tileSlot
     {
         public TileScript tile;
@@ -45,6 +47,8 @@ public class Level : MonoBehaviour {
             chunkGrid.Add(new chunkSlot());
         }
 
+
+        GenerateLevel();
         
     }
 
@@ -57,17 +61,17 @@ public class Level : MonoBehaviour {
         //TODO: Actual generation code goes here
         //--------------------------------------
 
-
-
-
         AddCluster(0,0,clusters[0]);
+        AddCluster(1, 0, clusters[0]);
+        AddCluster(0, 1, clusters[0]);
 
+        ConnectChunks();
         PopulateTiles();
     }
 
     public bool AddCluster(int x, int y, LevelChunkCluster c)
     {
-        if (!chunkGrid[(y * chunkColumns) + x].occupied)
+        if (chunkGrid[(y * chunkColumns) + x].occupied)
         {
             return false;
         }
@@ -94,7 +98,7 @@ public class Level : MonoBehaviour {
                 if(newCluster.grid[i + (j * c.width)] != null)
                 {
                     newCluster.grid[i + (j * c.width)].ChunkPosX = x + i;
-                    newCluster.grid[i + (j * c.width)].ChunkPosX = y + j;
+                    newCluster.grid[i + (j * c.width)].ChunkPosY = y + j;
                     chunkGrid[((y + j) * chunkColumns) + (x + i)].chunk = newCluster.grid[i + (j * c.width)];
                     chunkGrid[((y + j) * chunkColumns) + (x + i)].occupied = true;
                     newCluster.grid[i + (j * c.width)].GenerateSetPieces(lMan);
@@ -109,6 +113,9 @@ public class Level : MonoBehaviour {
     {
         for(int i= 0; i < chunkGrid.Count; i++)
         {
+            if (!chunkGrid[i].occupied)
+                continue;
+                
             if(chunkGrid[i].chunk.connectionsPresent[0] && chunkGrid[i].chunk.connections[0] == null)
             {
                 if(i % chunkColumns != chunkColumns-1 && chunkGrid[i + 1].occupied && chunkGrid[i + 1].chunk.connectionsPresent[2])
@@ -152,15 +159,4 @@ public class Level : MonoBehaviour {
             }
         }
     }
-
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

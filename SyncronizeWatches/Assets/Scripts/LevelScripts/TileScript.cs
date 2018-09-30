@@ -11,6 +11,6 @@ public class TileScript : MonoBehaviour {
     public int YPos { get { return yPos; } set { yPos = value; } }
 
     public bool passable = true;
-    public Sprite image;
+    public SpriteRenderer image;
     public bool init = false;
 }
