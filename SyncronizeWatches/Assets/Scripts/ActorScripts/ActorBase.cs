@@ -16,6 +16,8 @@ public class ActorBase : GamePiece {
 
     public List<Collectable> inventory;
 
+    public List<TimelineEventBase> timelineEvents;
+
 	// Update is called once per frame
 	void Update () {
 		

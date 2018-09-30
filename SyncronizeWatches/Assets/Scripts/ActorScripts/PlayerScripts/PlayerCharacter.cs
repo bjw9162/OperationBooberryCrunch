@@ -74,8 +74,12 @@ public class PlayerCharacter : ActorBase {
     /// </summary>
     public void ProcessMovement() {
         // take the velocity and apply it to the position;
+
+        var ogPos = Position;
         Position += Velocity * Time.deltaTime; 
         Velocity = Vector3.zero;
         transform.position = Position;
+
+        timelineEvents.Add(new MovementTimelineEvent(this, ogPos, Position)); // add the event to your personal list to be compiled later.
     }
 }
