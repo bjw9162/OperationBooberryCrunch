@@ -8,8 +8,8 @@ using UnityEngine;
 public class PlayerCharacter : ActorBase {
     
     public List<Interactable> interactables;
-    
     public float moneyAmount; // make sure you round the money amount up two places after decimal
+    public bool recording;
 
 	// Use this for initialization
 	public override void Init() {
@@ -17,6 +17,7 @@ public class PlayerCharacter : ActorBase {
         moneyAmount = 0f;
         direction = Vector3.right;
         interactables = new List<Interactable>();
+        recording = true;
 	}
 	
 	// Update is called once per frame
@@ -80,6 +81,7 @@ public class PlayerCharacter : ActorBase {
         Velocity = Vector3.zero;
         transform.position = Position;
 
-        timelineEvents.Add(new MovementTimelineEvent(this, ogPos, Position)); // add the event to your personal list to be compiled later.
+        if (recording == true)
+            timelineEvents.Add(new MovementTimelineEvent(this, ogPos, Position)); // add the event to your personal list to be compiled later.
     }
 }
