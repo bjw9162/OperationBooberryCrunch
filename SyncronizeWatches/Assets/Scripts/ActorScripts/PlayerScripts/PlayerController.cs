@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public List<PlayerCharacter> characters;
     private int currentCharacterIndex = 0;
     public InputManager inputManager;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -99,6 +100,12 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     protected void HandleInputs()
     {
+        if (Input.mousePosition != null) {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 perpendicular = transform.position - mousePos;
+            activeCharacter.transform.rotation = Quaternion.LookRotation(Vector3.forward, perpendicular);
+        }
+
         // if the input manager has been set elsewheres
         if (inputManager != null) {
 
