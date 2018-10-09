@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -8,7 +9,9 @@ public class PlayerController : MonoBehaviour {
     public List<PlayerCharacter> characters;
     private int currentCharacterIndex = 0;
     public InputManager inputManager;
-    
+
+    public Text text;
+
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +24,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // ¯\_(ツ)_/¯
-
+        UpdatePlayerUI();
         HandleInputs();
     }
 
@@ -49,7 +52,6 @@ public class PlayerController : MonoBehaviour {
         else {
             activeCharacter = characters[currentCharacterIndex];
         }
-            
     }
 
     /// <summary>
@@ -93,6 +95,12 @@ public class PlayerController : MonoBehaviour {
             allTimelines.Add(characters[i].timelineEvents);
         }
         return allTimelines.ToArray();
+    }
+
+    public void UpdatePlayerUI() {
+        text.color = activeCharacter.color;
+        text.text = activeCharacter.classType;
+        if (activeCharacter.subClassType != "") text.text += ": " + activeCharacter.subClassType;
     }
 
     /// <summary>

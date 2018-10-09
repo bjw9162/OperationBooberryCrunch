@@ -9,7 +9,7 @@ public class ThiefCharacter : PlayerCharacter
     {
         base.Init();
         classType = "Thief";
-        subClassType = "Guy with shifty eyes and an appreciation of shiny objects.";
+        subClassType = "Test Thief";
 
         speed = 1;
         direction = Quaternion.identity;

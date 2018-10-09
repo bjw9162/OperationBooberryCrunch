@@ -28,6 +28,7 @@ public class MovementTimelineEvent : TimelineEventBase {
     /// <param name="playerCharacter">The Player who is moving</param>
     /// <param name="_origin"> The place the player moved from</param>
     /// <param name="_destination"> The place the player moved to</param>
+    /// <param name="_rotation"> A Quat that represents the rotation of the character</param>
     public MovementTimelineEvent(PlayerCharacter playerCharacter, Vector3 _destination, Quaternion _rotation) {
         pc = playerCharacter;
         destination = _destination;
@@ -44,6 +45,6 @@ public class MovementTimelineEvent : TimelineEventBase {
         // Move the character from A to B
         pc.Position = destination;
         pc.transform.rotation = rotation;
-        Debug.Log(eventDescripton);
+        //Debug.Log(eventDescripton);
     }
 }
