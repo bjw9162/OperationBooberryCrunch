@@ -12,7 +12,7 @@ public class ThiefCharacter : PlayerCharacter
         subClassType = "Guy with shifty eyes and an appreciation of shiny objects.";
 
         speed = 1;
-        direction = Vector3.right;
+        direction = Quaternion.identity;
 
         health = 1;
     }

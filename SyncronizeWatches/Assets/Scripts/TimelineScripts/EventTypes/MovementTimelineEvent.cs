@@ -16,6 +16,11 @@ public class MovementTimelineEvent : TimelineEventBase {
     /// The place they moved to, a Vector3.
     /// </summary>
     Vector3 destination;
+    /// <summary>
+    /// What direction they were looking
+    /// </summary>
+    Quaternion rotation;
+
 
     /// <summary>
     /// Create a MovementTimelineEvent to be put onto the global timeline
@@ -23,9 +28,10 @@ public class MovementTimelineEvent : TimelineEventBase {
     /// <param name="playerCharacter">The Player who is moving</param>
     /// <param name="_origin"> The place the player moved from</param>
     /// <param name="_destination"> The place the player moved to</param>
-    public MovementTimelineEvent(PlayerCharacter playerCharacter, Vector3 _destination) {
+    public MovementTimelineEvent(PlayerCharacter playerCharacter, Vector3 _destination, Quaternion _rotation) {
         pc = playerCharacter;
         destination = _destination;
+        rotation = _rotation;
         timestamp = Timeline.timeElapsed;
         eventDescripton = string.Format("Player {0} moved to {1} at {2}", playerCharacter.pieceName, playerCharacter.Position, timestamp);
     }
@@ -37,6 +43,7 @@ public class MovementTimelineEvent : TimelineEventBase {
     public override void Resolve() {
         // Move the character from A to B
         pc.Position = destination;
+        pc.transform.rotation = rotation;
         Debug.Log(eventDescripton);
     }
 }

@@ -10,7 +10,7 @@ public class ActorBase : GamePiece {
     public string subClassType;
 
     public float speed;
-    public Vector3 direction;
+    public Quaternion direction;
 
     public int health = 1;
 

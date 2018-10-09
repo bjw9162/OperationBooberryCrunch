@@ -16,7 +16,6 @@ public class PlayerCharacter : ActorBase {
 	public override void Init() {
         base.Init();
         moneyAmount = 0f;
-        direction = Vector3.right;
         interactables = new List<Interactable>();
 
         // temporary
@@ -82,8 +81,9 @@ public class PlayerCharacter : ActorBase {
         Position += Velocity * Time.deltaTime; 
         Velocity = Vector3.zero;
         transform.position = Position;
+        transform.rotation = direction;
 
         if (recording == true)
-            timelineEvents.Add(new MovementTimelineEvent(this, this.Position)); // add the event to your personal list to be compiled later.
+            timelineEvents.Add(new MovementTimelineEvent(this, this.Position, this.direction)); // add the event to your personal list to be compiled later.
     }
 }

@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.mousePosition != null) {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 perpendicular = transform.position - mousePos;
-            activeCharacter.transform.rotation = Quaternion.LookRotation(Vector3.forward, perpendicular);
+            activeCharacter.direction = Quaternion.LookRotation(Vector3.forward, perpendicular);
         }
 
         // if the input manager has been set elsewheres
